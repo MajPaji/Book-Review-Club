@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+    
+        
+    <h4 class="center-align">Sign Up</h4>
+
+    <form class="col s12">
+        <div class="row">
+            <!-- username -->
+            <div class="input-field blue-grey-text col s12">
+                <i class="fas fa-user-plus blue-grey-text prefix"></i>
+                <input id="username" name="username" type="text" class="validate">
+                <label for="username">Username</label>
+            </div>
+            <!-- password -->
+            <div class="input-field blue-grey-text col s12">
+                <i class="fas fa-user-lock blue-grey-text prefix"></i>
+                <input id="password" name="password" type="password" class="validate">
+                <label for="password">Password</label>
+            </div>
+            <!-- checkbox -->
+            <div class="input-field  col s12">                            
+                <p>
+                <label for="checkbox">
+                    <input type="checkbox" id="checkbox" name="checkbox" value="yes" required/>
+                    <span class="blue-grey-text">I agree to the terms and conditions</span>
+                </label>
+                </p>
+            </div>
+            <!-- sign up -->                     
+            <button type="submit" class="btn-large teal col s12">
+                Sign up <i class="fas fa-sign-in-alt"></i>
+            </button>
+        </div>
+    </form>        
+
+
+{% endblock %}

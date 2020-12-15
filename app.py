@@ -3,6 +3,7 @@ from flask import (
     Flask, render_template, redirect, url_for, flash, request, session)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
+from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists('env.py'):
     import env
 
@@ -21,6 +22,11 @@ mongo = PyMongo(app)
 def book_review_club():
     books = list(mongo.db.books.find())
     return render_template("index.html", books=books)
+
+
+@app.route('/sign_up', methods=['GET','POST'])
+def sign_up():
+    return render_template("sign_up.html")
 
 
 if __name__ == "__main__":
