@@ -55,7 +55,7 @@ body {
 
 .callout {
   height: 65vh;
-  background: url("../images/hero-image-index.jpg");
+ 
   background-repeat: no-repeat;
   background-size: cover;
   -moz-background-size: cover;
@@ -94,9 +94,26 @@ body {
   border-color: #fafafa;
 }
 
-
+/* sign up */
 
 .sign-up {
     max-width: 550px;
     background-color: rgba(250, 250, 250, 0.8);
 }
+
+.falsh-messages-warning{
+    color: rgb(236, 82, 21);
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.term_and_conditions {
+    color: inherit;
+}
+
+.term_and_conditions:hover {
+    text-decoration: underline;
+}
+
+
