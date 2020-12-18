@@ -113,6 +113,43 @@ body {
     min-height: 65vh;
 }
 
+/* book section */
+
+.book {
+    margin-top: 15px;
+    border: solid 1px #795548;
+    color: #000;
+}
+
+.book img {
+    width: 150px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 5px;
+}
+
+.book-author span {
+    font-weight: bold;
+    font-style: italic;
+}
+
+.book-review span, .book-description span {
+    font-weight: bold;
+}
+
+
+.book-collection-img {
+    width: 100%;
+}
+
+.modal {
+   top: 50% !important;
+}
+
+.modal-footer{
+    display: none;
+}
+
 
 
 

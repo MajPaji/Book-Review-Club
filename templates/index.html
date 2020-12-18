@@ -2,10 +2,23 @@
 
 {% block content %}
 <section class="callout valign-wrapper" style="background: url({{ url_for('static', filename='images/hero-image-index.jpg') }}) center center;">
-    <div class="row"> 
-
-    
+    <div class="row">  
         
     </div>  
 </section>
+
+<div>
+    <div class="row">
+        {% for book in books %}
+        
+        <a class="col s10 offset-s1 m4 l3  brown lighten-4 book" href="{{ url_for('book_collection', book_id=book._id) }}">
+            <img src="{{ book.book_image_url }}" alt="cover image for {{ book.book_title}}">
+            <h5 class="center-align">{{ book.book_title }}</h5>
+            <p class="book-author"><span>Author:</span> {{ book.book_author}}</p>
+            <p class="book-review"><span>Review:</span> {{ book.book_review}}</p>
+        </a>
+        
+        {% endfor %}
+    </div>
+</div>
 {% endblock %}

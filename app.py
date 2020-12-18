@@ -84,8 +84,25 @@ def profile(username):
 
     if session["user"]:
         return render_template("profile.html", username=username)
-    
+
     return redirect(url_for('login'))
+
+
+@app.route('/book_collection/<book_id>', methods=["GET", "POST"])
+def book_collection(book_id):
+
+    if request.method == "POST":
+        submit = {
+            "review_by": session["user"],
+            "review_date": "1950",
+            "reviw_description": request.form.get("review_description")
+        }
+
+        mongo.db.books.update({"_id": ObjectId(book_id)}, {
+                              "$push": {"book_review": submit}})
+
+    book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
+    return render_template("book_collection.html", book=book)
 
 
 @app.route('/logout')
