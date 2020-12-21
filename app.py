@@ -90,19 +90,35 @@ def profile(username):
 
 @app.route('/book_collection/<book_id>', methods=["GET", "POST"])
 def book_collection(book_id):
+    checkbox = []
+    if mongo.db.books.find(
+            {"liked_by": {"$elemMatch": {"_user": session["user"]}}}).count() != 0:
+        checkbox = 'checked'
 
     if request.method == "POST":
-        submit = {
-            "review_by": session["user"],
-            "review_date": "1950",
-            "reviw_description": request.form.get("review_description")
-        }
+        if request.form.get("btn") == "submit":
+            submit = {
+                "review_by": session["user"],
+                "review_date": "1950",
+                "reviw_description": request.form.get("review_description")
+            }
 
-        mongo.db.books.update({"_id": ObjectId(book_id)}, {
-                              "$push": {"book_review": submit}})
+            mongo.db.books.update({"_id": ObjectId(book_id)}, {
+                "$push": {"book_review": submit}})
+        else:
+
+            if mongo.db.books.find(
+                    {"liked_by": {"$elemMatch": {"_user": session["user"]}}}).count() != 0:
+                mongo.db.books.update({"_id": ObjectId(book_id)}, {
+                                      "$pull": {"liked_by": {"_user": session["user"]}}})
+                checkbox = []
+            else:
+                mongo.db.books.update({"_id": ObjectId(book_id)}, {
+                                      "$push": {"liked_by": {"_user": session["user"]}}})
+                checkbox = 'checked'
 
     book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
-    return render_template("book_collection.html", book=book)
+    return render_template("book_collection.html", book=book, checkbox=checkbox)
 
 
 @app.route('/logout')
