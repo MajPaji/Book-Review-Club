@@ -100,7 +100,8 @@ def book_collection(book_id):
             submit = {
                 "review_by": session["user"],
                 "review_date": "1950",
-                "reviw_description": request.form.get("review_description")
+                "reviw_description": request.form.get("review_description"),
+                "review_id": ObjectId()
             }
 
             mongo.db.books.update({"_id": ObjectId(book_id)}, {
@@ -119,6 +120,13 @@ def book_collection(book_id):
 
     book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
     return render_template("book_collection.html", book=book, checkbox=checkbox)
+
+
+@app.route('/delete_review/<book_id>/<review_item>')
+def delete_review(book_id, review_item):
+    mongo.db.books.update({"_id": ObjectId(book_id)}, {"$pull": {"book_review": {"review_id": ObjectId(review_item)}}})
+    
+    return redirect(url_for('book_collection', book_id=book_id))
 
 
 @app.route('/logout')

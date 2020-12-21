@@ -68,10 +68,12 @@
             <p class="center-align"> {{ review.review_by }} </p>  
             <p class="center-align"> ({{review.review_date}}): </p>
         </div>
-        <div class="col s9">
-           
-           <p>{{ review.reviw_description }}</p> 
-                   
+        <div class="col s7">           
+           <p>{{ review.reviw_description }}</p>  
+                        
+        </div>
+        <div class="col s2"> 
+            <a href="{{ url_for('delete_review', book_id=book._id, review_item=review.review_id) }}">Delete</a>
         </div>
         
         
