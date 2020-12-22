@@ -1,31 +1,31 @@
+
+
 /* profile */
 
 .profile-section {
-    min-height: 65vh;
+    min-height: 50vh;
+    background-color: #f3f3f3;
+    font-size: 2.5vh;
 }
-
-
 
 
 /* like checkbox container */
 
 .container-heart {
-    position: absolute;
-    top: 30px;
-    left: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: inline-block;
+    padding-left: 20px;
+    padding-top: 30px;
 }
 
 input[type="checkbox"]{
-    height: 18px;
-    width: 18px;
+    height: 16px;
+    width: 16px;
     background-color:white;
     position: relative;
     outline: none;
     transform: rotate(45deg);
-    -webkit-appearance: none;    
+    -webkit-appearance: none;
+       
 }
 
 input[type="checkbox"]::before {
@@ -78,6 +78,36 @@ input:checked[type="checkbox"]::after {
 .container-heart-section{
     position: relative;
 }
+
+.book-title {
+    display: inline-block;
+    font-family: 'EB Garamond', serif;
+    font-size: 2.8vh;
+    font-weight: bold;
+    margin-bottom: 0px;
+}
+
+/* comment section */
+
+.comment-section {
+    background-color: #795548;
+    font-family: "Exo", sans-serif;
+    padding-top: 5px;
+}
+
+.comment {    
+    border-radius: 30px;
+    margin-bottom: 0;
+    background-color: #f3f3f3;
+    font-size: 1.5vh;
+    margin-top: 5px;
+}
+
+.material-tooltip{
+    color: red;
+    background-color: transparent ;
+}
+
 
 
 

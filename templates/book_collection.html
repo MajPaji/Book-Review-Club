@@ -5,13 +5,23 @@
 {% endblock %}
 
 {% block content %}
-<div class="container profile-section brown lighten-4">
+<div class="container profile-section">
     <div class="row">
         <div class="col s3">
             <img class="book-collection-img" src="{{ book.book_image_url }}" alt="cover image for {{ book.book_title}}">
         </div>
         <div class="col s9">
-            <h5 class="book-title">{{ book.book_title }}</h5>
+            <div class="row">
+            <div class="col s12 container-heart-section">
+                <p class="book-title"> {{ book.book_title }} </p>
+            <form class="container-heart" method="POST" action="{{ url_for('book_collection', book_id=book._id) }}">
+                <label class="tooltipped" data-position="right" data-tooltip="I like it">
+                    <input type="checkbox" name="book-like" onclick="$('.container-heart').submit();" {{ checkbox }}>                    
+                <span></span>
+                </label>
+            </form>
+            </div>
+            </div>
             <p class="book-author"><span>Author:</span> {{ book.book_author}}</p>
             <p class="book-description hide-on-small-only"><span>Description:</span> {{ book.book_description}}</p>
             <div  id="modal1" class="modal">
@@ -29,7 +39,7 @@
                     <div class="row">
                         <div class="col s12 center-align">
                             <button class="btn-large" type="submit" value="submit" name="btn">
-                                Submit Review <i class="fas fa-plus-square right"></i>
+                                Submit <i class="fas fa-paper-plane"></i>
                             </button>
                         </div>
                     </div>
@@ -39,18 +49,10 @@
                 <div class="modal-footer">
                 </div>
             </div>
-            <button data-target="modal1" class="btn modal-trigger">Add a review</button>
-            <div class="row">
-            <div class="col s12 container-heart-section">
-            <form class="container-heart" method="POST" action="{{ url_for('book_collection', book_id=book._id) }}">
-                <label>
-                    <input type="checkbox" name="book-like" onclick="$('.container-heart').submit();" {{ checkbox }}>                    
-                <span>I like this book</span>
-                </label>
-            </form>
-            </div>
-            </div>
-            
+            <button data-target="modal1" class="btn modal-trigger btn-size-large">
+                Add a review
+                <i class="fas fa-feather"></i>
+            </button>            
         </div>
 
     </div>
@@ -66,24 +68,19 @@
                 </div>
             </div>
     
-     {% for review in book.book_review|sort(attribute='review_date') %} 
-    <div class="row comment">
-        <div class="col s3">
-            <p class="center-align"> {{ review.review_by }} </p>  
-            <p class="center-align"> ({{review.review_date}}): </p>
+     <section class="comment-section">
+        {% for review in book.book_review|sort(attribute='review_date') %} 
+        <div class="row comment">
+            <div class="col s12">
+                <p><strong>{{ review.review_by }}</strong> reviewed on ({{ review.review_date }}): 
+                    <a href="{{ url_for('delete_review', book_id=book._id, review_item=review.review_id) }}">Delete</a>
+                </p>                
+                <p>{{ review.reviw_description }}</p>
+            </div>            
+           
         </div>
-        <div class="col s7">           
-           <p>{{ review.reviw_description }}</p>  
-                        
-        </div>
-        <div class="col s2"> 
-            <a href="{{ url_for('delete_review', book_id=book._id, review_item=review.review_id) }}">Delete</a>
-        </div>
-        
-        
-    </div>
-    {% endfor %}
-    
+        {% endfor %}
+    </section>
 </div>
 
 
