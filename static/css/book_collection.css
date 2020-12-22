@@ -1,0 +1,89 @@
+/* profile */
+
+.profile-section {
+    min-height: 65vh;
+}
+
+
+
+
+/* like checkbox container */
+
+.container-heart {
+    position: absolute;
+    top: 30px;
+    left: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+input[type="checkbox"]{
+    height: 18px;
+    width: 18px;
+    background-color:white;
+    position: relative;
+    outline: none;
+    transform: rotate(45deg);
+    -webkit-appearance: none;    
+}
+
+input[type="checkbox"]::before {
+    position: absolute;
+    content: "";
+    background-color:white;
+    height: 60%;
+    width: 100%;
+    top: -59%;
+    border-radius: 9px 9px 0 0;
+}
+
+input[type="checkbox"]::after{
+    position: absolute;
+    content:"";
+    background-color: white;
+    height: 60%;
+    width: 100%;
+    transform: rotate(-90deg);
+    border-radius: 9px 9px 0 0;
+    top: 20%;
+    right: 79%;
+}
+
+input[type="checkbox"]:checked,
+input:checked[type="checkbox"]::before,
+input:checked[type="checkbox"]::after {
+    background-color: red;
+}
+
+[type="checkbox"]:checked+span:not(.lever):before{
+    display: none;
+}
+
+[type="checkbox"]:not(:checked), 
+[type="checkbox"]:checked {
+    opacity: 1;
+    transform: rotate(45deg);
+    border-color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+}
+
+[type="checkbox"]+span:not(.lever):before, 
+[type="checkbox"]:not(.filled-in)+span:not(.lever):after{
+    display: none;
+}
+
+.container-heart-section{
+    position: relative;
+}
+
+
+
+
+
+
+
+
+
