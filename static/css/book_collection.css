@@ -91,7 +91,7 @@ input:checked[type="checkbox"]::after {
 
 .comment-section {
     background-color: #795548;
-    font-family: "Exo", sans-serif;
+    
     padding-top: 5px;
 }
 
@@ -99,13 +99,27 @@ input:checked[type="checkbox"]::after {
     border-radius: 30px;
     margin-bottom: 0;
     background-color: #f3f3f3;
+    font-family: "Exo", sans-serif;
     font-size: 1.5vh;
     margin-top: 5px;
+}
+
+.comment div p:last-child{
+    font-family: 'EB Garamond', serif;
+    font-weight: 700;
 }
 
 .material-tooltip{
     color: red;
     background-color: transparent ;
+}
+
+
+.like-list-section span{
+    margin-left: 15px;
+    font-weight: bold;
+    font-family: "Exo", sans-serif;
+    font-size: 1.5vh;
 }
 
 
