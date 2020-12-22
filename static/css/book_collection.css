@@ -3,8 +3,8 @@
 /* profile */
 
 .profile-section {
-    min-height: 50vh;
-    background-color: #f3f3f3;
+    
+    background-color: #d7ccc8;
     font-size: 2.5vh;
    
 }
@@ -99,7 +99,7 @@ input:checked[type="checkbox"]::after {
 .comment {    
     border-radius: 30px;
     margin-bottom: 0;
-    background-color: #f3f3f3;
+    background-color: #d7ccc8;
     font-family: "Exo", sans-serif;
     font-size: 1.5vh;
     margin-top: 5px;
