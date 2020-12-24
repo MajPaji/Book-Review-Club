@@ -22,7 +22,8 @@ mongo = PyMongo(app)
 @app.route('/book_review_club')
 def book_review_club():
     books = list(mongo.db.books.find())
-    return render_template("index.html", books=books)
+    copyright_year = datetime.datetime.now().strftime("%Y")
+    return render_template("index.html", books=books, copyright_year=copyright_year)
 
 
 @app.route('/sign_up', methods=['GET', 'POST'])
@@ -117,7 +118,6 @@ def book_collection(book_id):
         else:
 
             if mongo.db.books.find({"_id": ObjectId(book_id), "liked_by": {"$elemMatch": {"_user": session["user"]}}}).count() != 0:
-                print('hello')
                 print(mongo.db.books.find({"_id": ObjectId(book_id)}, {
                       "liked_by": {"$elemMatch": {"_user": session["user"]}}}).count())
                 mongo.db.books.update({"_id": ObjectId(book_id)}, {
