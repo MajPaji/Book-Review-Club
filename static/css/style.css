@@ -169,7 +169,11 @@ body {
     display: none;
 }
 
-
+.sub-note{
+    margin-top: 0;
+    margin-left: 50px;
+    font-size: smaller;
+}
 
 
 

@@ -92,17 +92,20 @@ def profile(username):
 
 @app.route('/book_collection/<book_id>', methods=["GET", "POST"])
 def book_collection(book_id):
-
+    # redirect to login page if there is no login user
     if session.get("user") is None:
         flash("Please login first")
         return redirect(url_for('login'))
 
+    # make heart active if user liked the book already
     checkbox = []
     tooltip_value = 'Love it'
-    if mongo.db.books.find({"_id": ObjectId(book_id), "liked_by": {"$elemMatch": {"_user": session["user"]}}}).count() != 0:
+    if mongo.db.books.find(
+        {"_id": ObjectId(book_id), "liked_by": {"$elemMatch": {"_user": session["user"]}}}).count() != 0:
         checkbox = 'checked'
         tooltip_value = 'Love it'
 
+    # review post
     if request.method == "POST":
         if request.form.get("btn") == "submit":
             submit = {
@@ -115,34 +118,37 @@ def book_collection(book_id):
 
             mongo.db.books.update({"_id": ObjectId(book_id)}, {
                 "$push": {"book_review": submit}})
+    # like post    
         else:
 
-            if mongo.db.books.find({"_id": ObjectId(book_id), "liked_by": {"$elemMatch": {"_user": session["user"]}}}).count() != 0:
-                print(mongo.db.books.find({"_id": ObjectId(book_id)}, {
-                      "liked_by": {"$elemMatch": {"_user": session["user"]}}}).count())
-                mongo.db.books.update({"_id": ObjectId(book_id)}, {
-                                      "$pull": {"liked_by": {"_user": session["user"]}}})
+            if mongo.db.books.find(
+                {"_id": ObjectId(book_id), "liked_by": {"$elemMatch": {"_user": session["user"]}}}).count() != 0:
+                mongo.db.books.update(
+                    {"_id": ObjectId(book_id)}, {"$pull": {"liked_by": {"_user": session["user"]}}})
                 checkbox = []
                 tooltip_value = 'Love it'
             else:
-                print('2')
-                print(mongo.db.books.find({"_id": ObjectId(book_id), "liked_by": {
-                      "$elemMatch": {"_user": session["user"]}}}).count())
-                mongo.db.books.update({"_id": ObjectId(book_id)}, {
-                                      "$push": {"liked_by": {"_user": session["user"]}}})
+                mongo.db.books.update(
+                    {"_id": ObjectId(book_id)}, {"$push": {"liked_by": {"_user": session["user"]}}})
                 checkbox = 'checked'
                 tooltip_value = 'Not a Fan'
 
     book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
-    return render_template("book_collection.html", book=book, checkbox=checkbox, tooltip_value=tooltip_value)
+    return render_template(
+        "book_collection.html", book=book, checkbox=checkbox, tooltip_value=tooltip_value)
 
 
 @app.route('/delete_review/<book_id>/<review_item>')
 def delete_review(book_id, review_item):
-    mongo.db.books.update({"_id": ObjectId(book_id)}, {
-                          "$pull": {"book_review": {"review_id": ObjectId(review_item)}}})
+    mongo.db.books.update(
+        {"_id": ObjectId(book_id)}, {"$pull": {"book_review": {"review_id": ObjectId(review_item)}}})
 
     return redirect(url_for('book_collection', book_id=book_id))
+
+
+@app.route("/book_collection", methods=["GET", "POST"])
+def add_book_collection():
+    return render_template("add_book_collection.html")
 
 
 @app.route('/logout')

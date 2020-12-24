@@ -38,7 +38,7 @@
             <div class="hide-on-med-and-down col s4">
             <ul class="right">
                 <li class=""><a href="{{ url_for('book_review_club') }}">Home <i class="fas fa-home"></i></a></li>
-                <li class=""><a href="#">Book Collections <i class="fas fa-book"></i></a></li>
+                <li class=""><a href="{{ url_for('add_book_collection') }}">Book Collections <i class="fas fa-book"></i></a></li>
                 {% if session.user %}
                     <li><a href="#" class="dropdown-trigger" data-target="dropdown1">{{ session.user }} <i class="far fa-user"></i></a></li>
                 {% else %}
@@ -63,7 +63,7 @@
         <!-- mobile side nav -->
         <ul class="sidenav" id="mobile-demo">
             <li><a href="{{ url_for('book_review_club') }}">Home <i class="fas fa-home"></i></a></li>
-            <li><a href="#">Book Collections <i class="fas fa-book"></i></a></li>
+            <li><a href="{{ url_for('add_book_collection') }}">Book Collections <i class="fas fa-book"></i></a></li>
             {% if session.user %}
                 <li ><a href="{{ url_for('profile', username=session['user']) }}"><i class="fas fa-address-card"></i> Profile</a></li>
             {% endif %}
