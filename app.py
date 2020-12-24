@@ -91,6 +91,11 @@ def profile(username):
 
 @app.route('/book_collection/<book_id>', methods=["GET", "POST"])
 def book_collection(book_id):
+
+    if session.get("user") is None:
+        flash("Please login first")
+        return redirect(url_for('login'))
+
     checkbox = []
     tooltip_value = 'Love it'
     if mongo.db.books.find({"_id": ObjectId(book_id), "liked_by": {"$elemMatch": {"_user": session["user"]}}}).count() != 0:
@@ -106,7 +111,7 @@ def book_collection(book_id):
                 "reviw_description": request.form.get("review_description"),
                 "review_id": ObjectId()
             }
-            
+
             mongo.db.books.update({"_id": ObjectId(book_id)}, {
                 "$push": {"book_review": submit}})
         else:
