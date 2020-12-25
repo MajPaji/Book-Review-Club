@@ -148,7 +148,25 @@ def delete_review(book_id, review_item):
 
 @app.route("/book_collection", methods=["GET", "POST"])
 def add_book_collection():
-    return render_template("add_book_collection.html")
+    # redirect to login page if there is no login user
+    if session.get("user") is None:
+        flash("Please login first")
+        return redirect(url_for('login'))
+
+
+    if request.method == "POST":
+        book = {
+            "book_image_url": request.form.get("book_image_url"),
+            "book_author": request.form.get("book_author"),
+            "book_title": request.form.get("book_title"),
+            "book_description": request.form.get("book_description"),
+            "added_by": session["user"]
+        }
+        mongo.db.books.insert_one(book)
+        flash("successfully added to your collection")
+
+    books = list(mongo.db.books.find({"added_by": session["user"]}))
+    return render_template("add_book_collection.html", books=books)
 
 
 @app.route('/logout')

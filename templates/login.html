@@ -26,7 +26,7 @@
                 
                 {% with messages = get_flashed_messages() %}
                         {% for message in messages %}
-                            <p class="falsh-messages-warning"><i class="fas fa-exclamation-circle"></i> {{ message }}</p>
+                            <p class="flash-messages red-text"><i class="fas fa-exclamation-circle"></i> {{ message }}</p>
                         {% endfor %}
                 {% endwith %}
 

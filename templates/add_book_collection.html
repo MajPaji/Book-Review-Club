@@ -15,7 +15,7 @@
                     <div class="input-field blue-grey-text col s6">
                         <i class="material-icons blue-grey-text prefix">Title</i>
                         <input id="book_title" name="book_title" type="text" class="validate" minlength="1"
-                            maxlength="50" pattern="^[a-zA-Z0-9]{1,50}$" required>
+                            maxlength="50" pattern="^[a-zA-Z0-9_ ]{1,50}$" required>
                         <label for="book_title">Book Title</label>
                         <p class="blue-grey-text sub-note">Only letters and numbers</p>
                     </div>
@@ -23,7 +23,7 @@
                     <div class="input-field blue-grey-text col s6">
                         <i class="fas fa-user-edit blue-grey-text prefix"></i>
                         <input id="book_author" name="book_author" type="text" class="validate" minlength="1"
-                            maxlength="15" pattern="^[a-zA-Z0-9]{1,15}$" required>
+                            maxlength="15" pattern="^[a-zA-Z0-9_ ]{1,15}$" required>
                         <label for="book_author">Book Author</label>
                         <p class="blue-grey-text sub-note">Only letters and numbers</p>
                     </div>
@@ -31,7 +31,7 @@
                     <div class="input-field blue-grey-text col s12">
                         <i class="fas fa-align-left blue-grey-text prefix"></i>
                         <textarea id="book_description" name="book_description" class="validate materialize-textarea"
-                            minlength="5" maxlength="350" pattern="^[a-zA-Z0-9]{1,350}$" required></textarea>
+                            minlength="1" maxlength="350" pattern="^[a-zA-Z0-9_ ]{1,350}$" required></textarea>
                         <label for="book_description">Book Description</label>
                     </div>
                     <!-- Book image url link -->
@@ -44,7 +44,13 @@
                         <label for="book_image_url">Book Cover Image Link</label>
                         <p class="blue-grey-text sub-note">Valid URL link</p>
                     </div>
-
+                    <!-- flash messages -->
+                
+                    {% with messages = get_flashed_messages() %}
+                            {% for message in messages %}
+                                <p class="flash-messages green-text"><i class="fas fa-exclamation-circle"></i> {{ message }}</p>
+                            {% endfor %}
+                    {% endwith %}
                     <!-- Submit button -->
                     <button type="submit" class="btn-large teal col s12">
                         Sumbit <i class="fas fa-paper-plane"></i>
@@ -63,5 +69,38 @@
 
 
 </section>
+
+<div>
+    <div class="row">
+        {% for book in books %}
+        
+        <a class="col s10 offset-s1 m4 l3  brown lighten-4 book" href="{{ url_for('book_collection', book_id=book._id) }}">
+            <img src="{{ book.book_image_url }}" alt="cover image for {{ book.book_title}}">
+            <h5 class="center-align">{{ book.book_title }}</h5>
+            <p class="book-author center-align"><span>Author:</span> {{ book.book_author}}</p>
+            <div class="row">
+               
+                <div class="col s6 center-align">
+                {% if (book.book_review|length == 0 or book.book_review|length == 1) %}
+                    <i class="fas fa-feather teal-text"></i> {{ book.book_review|length}} review
+                {% else %}
+                    <i class="fas fa-feather teal-text"></i> {{ book.book_review|length}} reviews
+                {% endif %}
+                </div>
+                    
+                <div class="col s6 center-align">
+                {% if (book.liked_by|length == 0 or book.liked_by|length == 1) %}
+                    <i class="fas fa-heart red-text"></i> {{ book.liked_by|length }} like
+                {% else %}
+                    <i class="fas fa-heart red-text"></i> {{ book.liked_by|length }} likes
+                {% endif %}
+                </div>
+            </div>
+        </a>
+        
+        {% endfor %}
+    </div>
+</div>
+
 
 {% endblock %}
