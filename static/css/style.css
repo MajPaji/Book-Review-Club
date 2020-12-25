@@ -129,7 +129,7 @@ body {
 }
 
 .book img {
-    width: 150px;
+    height: 150px;
     display: block;
     margin: 0 auto;
     margin-top: 5px;
@@ -175,6 +175,14 @@ body {
     margin-left: 50px;
     font-size: smaller;
 }
+
+.waves-ripple--red:hover {
+    background-color: #ffcdd2;
+  }
+
+.waves-ripple--teal:hover {
+    background-color: #b2dfdb;
+  }
 
 
 

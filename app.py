@@ -101,7 +101,7 @@ def book_collection(book_id):
     checkbox = []
     tooltip_value = 'Love it'
     if mongo.db.books.find(
-        {"_id": ObjectId(book_id), "liked_by": {"$elemMatch": {"_user": session["user"]}}}).count() != 0:
+            {"_id": ObjectId(book_id), "liked_by": {"$elemMatch": {"_user": session["user"]}}}).count() != 0:
         checkbox = 'checked'
         tooltip_value = 'Love it'
 
@@ -118,11 +118,11 @@ def book_collection(book_id):
 
             mongo.db.books.update({"_id": ObjectId(book_id)}, {
                 "$push": {"book_review": submit}})
-    # like post    
+    # like post
         else:
 
             if mongo.db.books.find(
-                {"_id": ObjectId(book_id), "liked_by": {"$elemMatch": {"_user": session["user"]}}}).count() != 0:
+                    {"_id": ObjectId(book_id), "liked_by": {"$elemMatch": {"_user": session["user"]}}}).count() != 0:
                 mongo.db.books.update(
                     {"_id": ObjectId(book_id)}, {"$pull": {"liked_by": {"_user": session["user"]}}})
                 checkbox = []
@@ -153,7 +153,6 @@ def add_book_collection():
         flash("Please login first")
         return redirect(url_for('login'))
 
-
     if request.method == "POST":
         book = {
             "book_image_url": request.form.get("book_image_url"),
@@ -164,6 +163,36 @@ def add_book_collection():
         }
         mongo.db.books.insert_one(book)
         flash("successfully added to your collection")
+
+    books = list(mongo.db.books.find({"added_by": session["user"]}))
+    return render_template("add_book_collection.html", books=books)
+
+
+@app.route("/edit_book_collection/<book_id>", methods=["GET", "POST"])
+def edit_book_collection(book_id):
+
+    edit_book = mongo.db.books.find({"_id": ObjectId(book_id)})
+
+    if request.method == "POST":
+        book = {
+            "book_image_url": request.form.get("book_image_url"),
+            "book_author": request.form.get("book_author"),
+            "book_title": request.form.get("book_title"),
+            "book_description": request.form.get("book_description"),
+            "added_by": session["user"],
+        }
+
+        mongo.db.books.update_one({"_id": ObjectId(book_id)}, {"$set": book})
+        flash("successfully updated")
+
+    return render_template("edit_book_collection.html", edit_book=edit_book)
+
+
+@app.route("/delete_book_collection/<book_id>", methods=["GET", "POST"])
+def delete_book_collection(book_id):
+
+    delete_book = mongo.db.books.remove({"_id": ObjectId(book_id)})
+    flash("successfully deleted")
 
     books = list(mongo.db.books.find({"added_by": session["user"]}))
     return render_template("add_book_collection.html", books=books)
