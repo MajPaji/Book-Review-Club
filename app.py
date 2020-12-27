@@ -4,6 +4,7 @@ from flask import (
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 import datetime
+import json
 from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists('env.py'):
     import env
@@ -23,7 +24,10 @@ mongo = PyMongo(app)
 def book_review_club():
     books = list(mongo.db.books.find())
     copyright_year = datetime.datetime.now().strftime("%Y")
-    return render_template("index.html", books=books, copyright_year=copyright_year)
+    data = []
+    with open("static/data/quotes.json", "r") as json_data_quotes:
+        data = json.load(json_data_quotes)
+    return render_template("index.html", books=books, copyright_year=copyright_year, quotes=data)
 
 
 @app.route('/sign_up', methods=['GET', 'POST'])

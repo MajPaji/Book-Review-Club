@@ -184,7 +184,35 @@ body {
     background-color: #b2dfdb;
   }
 
+.carousel.carousel-slider .carousel-item {
+    opacity: 0;
+    
+}
 
+.speech-frame {
+	position: relative;
+    border-radius: .4em;
+}
+
+.speech-frame:after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	width: 0;
+	height: 0;
+	border: 2.281em solid transparent;
+	border-top-color: #d7ccc8 ;
+	border-bottom: 0;
+	border-left: 0;
+	margin-left: -1.141em;
+	margin-bottom: -2.281em;
+}
+
+.carousel.carousel-slider .carousel-item p {
+    font-size: 2vh;
+    font-family: 'EB Garamond', serif;
+}
 
 
 
