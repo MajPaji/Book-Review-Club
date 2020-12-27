@@ -20,17 +20,17 @@
     <header>
         <!-- top navbar --> 
         <nav class="nav-extended navbar brown darken-1 row">
-            <div class="nav-wrapper col s12 m12 l4">
+            <div class="nav-wrapper col s12 m12 l4 ">
                 <a href="{{ url_for('book_review_club') }}" class="brand-logo left">Book Review Club</a>            
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>       
             </div>
-            <nav class="nav-search brown darken-1 hide-on-med-and-down col s4">
+            <nav class="nav-search brown darken-1 show-on-med-and-down col s12 m4">
                 <div class="nav-wrapper">
-                    <form>
+                    <form method="POST" action="{{ url_for('search') }}">
                         <div class="input-field">
-                        <input id="search" type="search" required>
-                        <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-                        <i class="material-icons">close</i>
+                            <input id="search" type="search" name="search" minlength="3" class="validate" required>
+                            <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                            <i class="material-icons">close</i>
                         </div>
                     </form>
                     </div>                
@@ -38,8 +38,9 @@
             <div class="hide-on-med-and-down col s4">
             <ul class="right">
                 <li class=""><a href="{{ url_for('book_review_club') }}">Home <i class="fas fa-home"></i></a></li>
-                <li class=""><a href="{{ url_for('add_book_collection') }}">Book Collections <i class="fas fa-book"></i></a></li>
+                
                 {% if session.user %}
+                    <li class=""><a href="{{ url_for('add_book_collection') }}">My Book Collections <i class="fas fa-book"></i></a></li>
                     <li><a href="#" class="dropdown-trigger" data-target="dropdown1">{{ session.user }} <i class="far fa-user"></i></a></li>
                 {% else %}
                     <li><a href="#" class="dropdown-trigger" data-target="dropdown1">My page <i class="far fa-user"></i></a></li>
@@ -48,23 +49,14 @@
             </ul>
             </div>
           <!-- mobiel search navbar -->  
-            <nav class="nav-search brown darken-1 show-on-medium-and-down hide-on-med-and-up col s10 offset-s1">
-                <div class="nav-wrapper">
-                    <form>
-                        <div class="input-field">
-                        <input id="search" type="search" required>
-                        <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-                        <i class="material-icons">close</i>
-                        </div>
-                    </form>
-                    </div>                
-            </nav>           
+              
         </nav>
         <!-- mobile side nav -->
         <ul class="sidenav" id="mobile-demo">
             <li><a href="{{ url_for('book_review_club') }}">Home <i class="fas fa-home"></i></a></li>
-            <li><a href="{{ url_for('add_book_collection') }}">Book Collections <i class="fas fa-book"></i></a></li>
+            
             {% if session.user %}
+                <li><a href="{{ url_for('add_book_collection') }}">My Book Collections <i class="fas fa-book"></i></a></li>
                 <li ><a href="{{ url_for('profile', username=session['user']) }}"><i class="fas fa-address-card"></i> Profile</a></li>
             {% endif %}
             {% if not session.user %}
@@ -93,18 +85,7 @@
 
     </header>
 
-    <!-- category -->
-    <section class="category container">
-        <div class="row">
-            <a href="" class="col s4 m2 center-align">All</a>
-            <a href="" class="col s4 m2 center-align">Popular</a>
-            <a href="" class="col s4 m2 center-align">Art</a>
-            <a href="" class="col s4 m2 center-align">Fiction</a>
-            <a href="" class="col s4 m2 center-align">History</a>
-            <a href="" class="col s4 m2 center-align">Science</a>
-        </div>
-    </section>
-
+    
     <!-- main callout -->
     
             
@@ -150,7 +131,7 @@
         </div>
         <div class="center-align brown darken-4">
             <div class="">
-                © {{ copyright_year }} MajiPaji MSP3         
+                © {{ copyright_year }} MajiPaji MSP3 “For Educational Purposes Only”        
             </div>
         </div>
     </footer>

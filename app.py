@@ -30,6 +30,14 @@ def book_review_club():
     return render_template("index.html", books=books, copyright_year=copyright_year, quotes=data)
 
 
+@app.route('/search', methods=['GET', 'POST'])
+def search():
+    query = request.form.get('search')
+    books = list(mongo.db.books.find({"$text": {"$search": query}}))
+    copyright_year = datetime.datetime.now().strftime("%Y")
+    return render_template("search.html", books=books, copyright_year=copyright_year)
+
+
 @app.route('/sign_up', methods=['GET', 'POST'])
 def sign_up():
 
@@ -168,7 +176,11 @@ def add_book_collection():
         mongo.db.books.insert_one(book)
         flash("successfully added to your collection")
 
-    books = list(mongo.db.books.find({"added_by": session["user"]}))
+    if session["user"] == "m_admin":
+        books = list(mongo.db.books.find())
+    else:
+        books = list(mongo.db.books.find({"added_by": session["user"]}))
+
     return render_template("add_book_collection.html", books=books)
 
 

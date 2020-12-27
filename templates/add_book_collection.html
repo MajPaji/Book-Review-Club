@@ -15,7 +15,7 @@
                     <div class="input-field blue-grey-text col s6">
                         <i class="material-icons blue-grey-text prefix">Title</i>
                         <input id="book_title" name="book_title" type="text" class="validate" minlength="1"
-                            maxlength="30" pattern="^[a-zA-Z0-9_ ]{1,50}$" required>
+                            maxlength="50" pattern="^[a-zA-Z0-9_. ]{1,50}$" required>
                         <label for="book_title">Book Title</label>
                         <p class="blue-grey-text sub-note">Only letters and numbers</p>
                     </div>
@@ -23,7 +23,7 @@
                     <div class="input-field blue-grey-text col s6">
                         <i class="fas fa-user-edit blue-grey-text prefix"></i>
                         <input id="book_author" name="book_author" type="text" class="validate" minlength="1"
-                            maxlength="15" pattern="^[a-zA-Z0-9_ ]{1,15}$" required>
+                            maxlength="30" pattern="^[a-zA-Z0-9_. ]{1,30}$" required>
                         <label for="book_author">Book Author</label>
                         <p class="blue-grey-text sub-note">Only letters and numbers</p>
                     </div>
@@ -31,7 +31,7 @@
                     <div class="input-field blue-grey-text col s12">
                         <i class="fas fa-align-left blue-grey-text prefix"></i>
                         <textarea id="book_description" name="book_description" class="validate materialize-textarea"
-                            minlength="1" maxlength="350" pattern="^[a-zA-Z0-9_ ]{1,350}$" required></textarea>
+                            minlength="1" maxlength="350" pattern="^[a-zA-Z0-9_. ]{1,350}$" required></textarea>
                         <label for="book_description">Book Description</label>
                     </div>
                     <!-- Book image url link -->

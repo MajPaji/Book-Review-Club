@@ -2,6 +2,7 @@
 
 /* body */
 
+
 body {
     display: flex;
     min-height: 100vh;
@@ -11,6 +12,7 @@ body {
 
 .main-section{
     flex: 1 0 auto;
+    background-color: #4e342e;
 }
 
 
@@ -19,7 +21,28 @@ body {
     box-shadow: none;
     font-family: "Exo", sans-serif;
     letter-spacing: 1px;
+    margin-bottom: 0;
   }
+
+  nav ul a {
+    -webkit-transition: background-color .3s;
+    transition: background-color .3s;
+    font-size: 1rem;
+    color: #fff;
+    display: block;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+nav .brand-logo {
+    position: absolute;
+    color: #fff;
+    display: inline-block;
+    font-size: 2.1rem;
+    padding: 0;
+    margin-top: 10px;
+}
+
 
 .nav-search {
     box-shadow: none;
@@ -34,8 +57,8 @@ body {
     margin-top: 0;
 }
 
-#search {
-    height: 64px;
+#search, #search-mobile {
+    height: 6.5vh;
 }
 
 #dropdown1 a {
@@ -59,7 +82,7 @@ body {
 /* call out section */
 
 .callout {
-  height: 65vh;
+  height: 73vh;
   width: auto;
   
   background-repeat: no-repeat !important;
@@ -74,7 +97,7 @@ body {
 /* footer */
 
 .page-footer{
-    margin-top: 5px;
+    border-top: solid 1px #fafafa;
 }
 
 .footer-social {
