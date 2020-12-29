@@ -56,20 +56,12 @@
                         Sumbit <i class="fas fa-paper-plane"></i>
                     </button>
                 </div>
-
-
             </form>
-
-
         </div>
-
-
-
     </div>
 
 
 </section>
-
 <div>
     <div class="row">
         {% for book in books %}
@@ -113,11 +105,8 @@
                 {% else %}
                     <i class="fas fa-heart red-text"></i> {{ book.liked_by|length }} likes
                 {% endif %}
-                </div>
-                
-                               
+                </div>           
             </div>
-            
         </a>
         
         {% endfor %}

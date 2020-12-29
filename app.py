@@ -27,7 +27,8 @@ def book_review_club():
     data = []
     with open("static/data/quotes.json", "r") as json_data_quotes:
         data = json.load(json_data_quotes)
-    return render_template("index.html", books=books, copyright_year=copyright_year, quotes=data)
+    return render_template(
+        "index.html", books=books, copyright_year=copyright_year, quotes=data)
 
 
 @app.route('/search', methods=['GET', 'POST'])
@@ -35,7 +36,8 @@ def search():
     query = request.form.get('search')
     books = list(mongo.db.books.find({"$text": {"$search": query}}))
     copyright_year = datetime.datetime.now().strftime("%Y")
-    return render_template("search.html", books=books, copyright_year=copyright_year)
+    return render_template(
+        "search.html", books=books, copyright_year=copyright_year)
 
 
 @app.route('/sign_up', methods=['GET', 'POST'])
@@ -113,7 +115,8 @@ def book_collection(book_id):
     checkbox = []
     tooltip_value = 'Love it'
     if mongo.db.books.find(
-            {"_id": ObjectId(book_id), "liked_by": {"$elemMatch": {"_user": session["user"]}}}).count() != 0:
+            {"_id": ObjectId(book_id), "liked_by":
+             {"$elemMatch": {"_user": session["user"]}}}).count() != 0:
         checkbox = 'checked'
         tooltip_value = 'Love it'
 
@@ -122,8 +125,10 @@ def book_collection(book_id):
         if request.form.get("btn") == "submit":
             submit = {
                 "review_by": session["user"],
-                "review_date": datetime.datetime.now().strftime("%b %d %Y %H:%M:%S"),
-                "review_date_value": int(datetime.datetime.now().strftime('%Y%m%d%H%M%S')),
+                "review_date": datetime.datetime.now().strftime(
+                    "%b %d %Y %H:%M:%S"),
+                "review_date_value": int(
+                    datetime.datetime.now().strftime('%Y%m%d%H%M%S')),
                 "reviw_description": request.form.get("review_description"),
                 "review_id": ObjectId()
             }
@@ -132,28 +137,33 @@ def book_collection(book_id):
                 "$push": {"book_review": submit}})
     # like post
         else:
-
             if mongo.db.books.find(
-                    {"_id": ObjectId(book_id), "liked_by": {"$elemMatch": {"_user": session["user"]}}}).count() != 0:
+                    {"_id": ObjectId(book_id),
+                     "liked_by": {"$elemMatch":
+                                  {"_user": session["user"]}}}).count() != 0:
                 mongo.db.books.update(
-                    {"_id": ObjectId(book_id)}, {"$pull": {"liked_by": {"_user": session["user"]}}})
+                    {"_id": ObjectId(book_id)},
+                    {"$pull": {"liked_by": {"_user": session["user"]}}})
                 checkbox = []
                 tooltip_value = 'Love it'
             else:
                 mongo.db.books.update(
-                    {"_id": ObjectId(book_id)}, {"$push": {"liked_by": {"_user": session["user"]}}})
+                    {"_id": ObjectId(book_id)},
+                    {"$push": {"liked_by": {"_user": session["user"]}}})
                 checkbox = 'checked'
                 tooltip_value = 'Not a Fan'
 
     book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
     return render_template(
-        "book_collection.html", book=book, checkbox=checkbox, tooltip_value=tooltip_value)
+        "book_collection.html",
+        book=book, checkbox=checkbox, tooltip_value=tooltip_value)
 
 
 @app.route('/delete_review/<book_id>/<review_item>')
 def delete_review(book_id, review_item):
     mongo.db.books.update(
-        {"_id": ObjectId(book_id)}, {"$pull": {"book_review": {"review_id": ObjectId(review_item)}}})
+        {"_id": ObjectId(book_id)},
+        {"$pull": {"book_review": {"review_id": ObjectId(review_item)}}})
 
     return redirect(url_for('book_collection', book_id=book_id))
 
@@ -176,6 +186,7 @@ def add_book_collection():
         mongo.db.books.insert_one(book)
         flash("successfully added to your collection")
 
+    # m_admin can delete or edit all books but users can just modify theirs
     if session["user"] == "m_admin":
         books = list(mongo.db.books.find())
     else:
@@ -207,7 +218,8 @@ def edit_book_collection(book_id):
 @app.route("/delete_book_collection/<book_id>", methods=["GET", "POST"])
 def delete_book_collection(book_id):
 
-    delete_book = mongo.db.books.remove({"_id": ObjectId(book_id)})
+    mongo.db.books.remove(
+        {"_id": ObjectId(book_id)})
     flash("successfully deleted")
 
     books = list(mongo.db.books.find({"added_by": session["user"]}))
