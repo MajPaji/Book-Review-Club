@@ -23,18 +23,15 @@ mongo = PyMongo(app)
 @app.route('/book_review_club')
 def book_review_club():
     """
-        Render home page with available books
+        Render home page with available books and quotes from db
     """
 
     books = list(mongo.db.books.find())
     copyright_year = datetime.datetime.now().strftime("%Y")
-    data = []
-    with open("static/data/quotes.json", "r") as json_data_quotes:
-        data = json.load(json_data_quotes)
-    for d in data:
-        mongo.db.quotes.insert_one(d)
+    quotes = list(mongo.db.quotes.find())
     return render_template(
-        "index.html", books=books, copyright_year=copyright_year, quotes=data)
+        "index.html", books=books, copyright_year=copyright_year,
+        quotes=quotes)
 
 
 @app.route('/search', methods=['GET', 'POST'])
@@ -217,7 +214,7 @@ def add_book_collection():
     if request.method == "POST":
         display_title = request.form.get('book_title').title()
         if display_title.len() > 20:
-            display_title= display_title[:20] + '...' 
+            display_title = display_title[:20] + '...'
 
         book = {
             "book_image_url": request.form.get("book_image_url"),
@@ -254,7 +251,7 @@ def edit_book_collection(book_id):
     if request.method == "POST":
         display_title = request.form.get('book_title').title()
         if len(display_title) > 20:
-            display_title= display_title[:20] + '...' 
+            display_title = display_title[:20] + '...'
 
         book = {
             "book_image_url": request.form.get("book_image_url"),
