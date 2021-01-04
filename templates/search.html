@@ -5,6 +5,7 @@
 
 <div>
     <div class="row">
+        {% if books|length > 0 %}
         {% for book in books %}
         
         <a class="col s10 offset-s1 m4 l3  brown lighten-4 book" href="{{ url_for('book_collection', book_id=book._id) }}">
@@ -32,6 +33,9 @@
         </a>
         
         {% endfor %}
+        {% else %}
+            <h4 class="center-align no-results-message"><i class="fas fa-exclamation-circle"></i> No results found</h4>
+        {% endif %}
     </div>
 </div>
 {% endblock %}

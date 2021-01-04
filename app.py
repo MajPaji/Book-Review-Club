@@ -146,7 +146,7 @@ def book_collection(book_id):
             {"_id": ObjectId(book_id), "liked_by":
              {"$elemMatch": {"_user": session["user"]}}}).count() != 0:
         checkbox = 'checked'
-        tooltip_value = 'Love it'
+        tooltip_value = 'Not a Fan'
 
     # review post
     if request.method == "POST":
@@ -213,7 +213,7 @@ def add_book_collection():
 
     if request.method == "POST":
         display_title = request.form.get('book_title').title()
-        if display_title.len() > 20:
+        if len(display_title) > 20:
             display_title = display_title[:20] + '...'
 
         book = {

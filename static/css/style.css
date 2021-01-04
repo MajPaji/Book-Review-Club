@@ -238,6 +238,14 @@ nav .brand-logo {
     font-family: 'EB Garamond', serif;
 }
 
+.no-results-message{
+    font-family: "Exo", sans-serif;
+    color: #fafafa;
+    letter-spacing: 1px;
+    font-size: xx-large;
+    margin-top: 20vh;
+}
+
 
 
 
