@@ -22,6 +22,10 @@ mongo = PyMongo(app)
 @app.route('/')
 @app.route('/book_review_club')
 def book_review_club():
+    """
+        Render home page with available books 
+    """
+
     books = list(mongo.db.books.find())
     copyright_year = datetime.datetime.now().strftime("%Y")
     data = []
@@ -33,6 +37,10 @@ def book_review_club():
 
 @app.route('/search', methods=['GET', 'POST'])
 def search():
+    """
+        Search books within title and description section
+    """
+
     query = request.form.get('search')
     books = list(mongo.db.books.find({"$text": {"$search": query}}))
     copyright_year = datetime.datetime.now().strftime("%Y")
@@ -42,6 +50,9 @@ def search():
 
 @app.route('/sign_up', methods=['GET', 'POST'])
 def sign_up():
+    """
+        Sign up function
+    """
 
     if request.method == "POST":
 
@@ -66,11 +77,18 @@ def sign_up():
 
 @app.route('/term_and_conditions')
 def term_and_conditions():
+    """
+        Render term and condition section
+    """
+
     return render_template("term_and_conditions.html")
 
 
 @app.route('/login', methods=["GET", "POST"])
 def login():
+    """
+        Log in function
+    """
 
     if request.method == "POST":
         # check user in db
@@ -95,6 +113,10 @@ def login():
 
 @app.route('/profile/<username>')
 def profile(username):
+    """
+        render user profile from db
+    """
+
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
 
@@ -106,6 +128,13 @@ def profile(username):
 
 @app.route('/book_collection/<book_id>', methods=["GET", "POST"])
 def book_collection(book_id):
+    """
+        render my book collection from db
+        user can like/unlike the book, write a review
+        user can delete its own review.
+        admin can delete delete all reviews.
+    """
+
     # redirect to login page if there is no login user
     if session.get("user") is None:
         flash("Please login first")
@@ -161,6 +190,9 @@ def book_collection(book_id):
 
 @app.route('/delete_review/<book_id>/<review_item>')
 def delete_review(book_id, review_item):
+    """
+        Delete review function
+    """
     mongo.db.books.update(
         {"_id": ObjectId(book_id)},
         {"$pull": {"book_review": {"review_id": ObjectId(review_item)}}})
@@ -170,6 +202,11 @@ def delete_review(book_id, review_item):
 
 @app.route("/book_collection", methods=["GET", "POST"])
 def add_book_collection():
+    """
+        add book collection function. user can add book to db.
+        user needs to log in first.
+    """
+
     # redirect to login page if there is no login user
     if session.get("user") is None:
         flash("Please login first")
@@ -197,6 +234,13 @@ def add_book_collection():
 
 @app.route("/edit_book_collection/<book_id>", methods=["GET", "POST"])
 def edit_book_collection(book_id):
+    """
+        edit books in the book collection section
+    """
+    # redirect to login page if there is no login user
+    if session.get("user") is None:
+        flash("Please login first")
+        return redirect(url_for('login'))
 
     edit_book = mongo.db.books.find({"_id": ObjectId(book_id)})
 
@@ -217,6 +261,13 @@ def edit_book_collection(book_id):
 
 @app.route("/delete_book_collection/<book_id>", methods=["GET", "POST"])
 def delete_book_collection(book_id):
+    """
+        Delete books in book collection section
+    """
+    # redirect to login page if there is no login user
+    if session.get("user") is None:
+        flash("Please login first")
+        return redirect(url_for('login'))
 
     mongo.db.books.remove(
         {"_id": ObjectId(book_id)})
@@ -228,6 +279,9 @@ def delete_book_collection(book_id):
 
 @app.route('/logout')
 def logout():
+    """
+        Log out function
+    """
 
     session.pop("user")
     return redirect(url_for('login'))
