@@ -46,7 +46,7 @@ nav .brand-logo {
 
 .nav-search {
     box-shadow: none;
-    border-bottom: solid 1px #fafafa;
+    
 }
 
 #dropdown1 li a {
@@ -58,7 +58,8 @@ nav .brand-logo {
 }
 
 #search, #search-mobile {
-    height: 6.5vh;
+    height: 9vh;
+    margin-top: 10px;
 }
 
 #dropdown1 a {

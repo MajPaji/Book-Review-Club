@@ -20,7 +20,7 @@
     <header>
         <!-- top navbar --> 
         <nav class="nav-extended navbar brown darken-1 row">
-            <div class="nav-wrapper col s12 m12 l4 ">
+            <div class="nav-wrapper col s12 m12 l4">
                 <a href="{{ url_for('book_review_club') }}" class="brand-logo left">Book Review Club</a>            
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>       
             </div>
@@ -40,7 +40,7 @@
                 <li class=""><a href="{{ url_for('book_review_club') }}">Home <i class="fas fa-home"></i></a></li>
                 
                 {% if session.user %}
-                    <li class=""><a href="{{ url_for('add_book_collection') }}">My Book Collections <i class="fas fa-book"></i></a></li>
+                    <li class=""><a href="{{ url_for('add_book_collection') }}">My Books <i class="fas fa-book"></i></a></li>
                     <li><a href="#" class="dropdown-trigger" data-target="dropdown1">{{ session.user }} <i class="far fa-user"></i></a></li>
                 {% else %}
                     <li><a href="#" class="dropdown-trigger" data-target="dropdown1">My page <i class="far fa-user"></i></a></li>
