@@ -61,11 +61,17 @@
         <span>Users who liked this book:</span> 
     <div class="row">
         <div class="col s12">
+            {% if book.liked_by|length > 0 %}
             {% for user in book.liked_by %}
             <div class="chip">                       
                 {{ user._user }} 
             </div>
             {% endfor %}
+            {% else %}
+            <div class="chip">                       
+                You can be the first one who like this book <i class="fas fa-heart"></i>
+            </div>
+            {% endif %}
             
         </div>
     </div>
