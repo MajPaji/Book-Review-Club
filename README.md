@@ -14,9 +14,9 @@ Then, you can like and share your opinion about the book too.
 
 ## Table of Contents
 
-[1- Introduction](#1)<br/>
+1. [Introduction](#introduction)<br/>
 [2- UX](#2)<br/>
-[3- Features](#3)
+[3- Features](#3)<br/>
 * [3-1- Existing Features](#3-1)<br/>
     *  [3-1-1- Home page](#3-1-1)<br/>
     *  [3-1-2- My page](#3-1-2)<br/>
@@ -43,6 +43,7 @@ Then, you can like and share your opinion about the book too.
 [8- Media](#8)<br/>
 [9- Acknowledgements](#9)<br/>
 [10- Disclaimer](#10)<br/>
+
 
 
 
