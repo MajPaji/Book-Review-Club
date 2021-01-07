@@ -248,10 +248,68 @@ The website was tested on:
 * Samsung S8
     * There was no issue. The results can be seen in the following [link](testing/validation/SamsungS8.pdf).
 
+## Deployment
 
+### GitHub
 
+It is possible to deploy this project in GitHub as your development environment, with following these steps:
 
+* Save a copy of the github repository located at https://github.com/MajPaji/Book-Review-Club.git or with clone in git clicking
 
+```
+git clone https://github.com/MajPaji/Book-Review-Club.git
+```
+* Install all requirements modules with following CL:
+```
+pip3 install -r requirements.txt
+```
+* create `env.py` file with follwoing data:
+
+```
+MONGO_URI=mongodb+srv://...
+SECRET_KEY=verysecretkey
+```
+* In the last line of `app.py` change `debug=False` to `debug=True`
+
+* It is possible to run the application with following CL:
+
+```
+python app.py
+```
+### Heroku
+
+It is possible to deploy this project to Heroku, with following steps:
+
+* Make a requirements.txt file using follwing CL:
+
+```
+pip freeze > requirements.txt
+```
+* Make a Procfile in the CL:
+```
+echo web: python app.py > Procfile
+```
+* Push requirements and Procfile to the GitHub 
+
+* Create a new app on the Heroku website (It is not possible to choose the simillar name as this project)
+
+* In the Heroku dashbord click Deploy and in the Deployment method select GitHub
+
+* Confirm the linking
+
+* In the Heroku dashbord click Setting and Reveal Config Vars
+
+* Set the following parameters
+
+| Key | Value |
+ --- | ---
+IP | 0.0.0.0
+PORT | 5000
+MONGO_URI | `mongodb+srv://<username>:<password>@<cluster_name>-qtxun.mongodb.net/<database_name>?retryWrites=true&w=majority`
+SECRET_KEY | `<your_secret_key>`
+DEBUG | FALSE
+
+* Click Deploy in the Heroku dashbord
 
 
 
