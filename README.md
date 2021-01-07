@@ -72,7 +72,7 @@ Other people's feedback helps me to understand if I have the right conclusion.
 makes them interested in readings.
 
 The desktop and mobile resolution wireframes of 
-the Book Review Club can be found in the following [link](wireframes/wireframes.pdf).
+the Book Review Club can be found in the following [link](wireframes/Wireframes.pdf).
 
 
 
