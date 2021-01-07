@@ -67,6 +67,11 @@ nav .brand-logo {
     padding-right: 5px;
 }
 
+.sidenav{
+    background-color: #bcaaa4 ;
+    font-family: "Exo", sans-serif;
+}
+
 /* category section */
 
 .category {
