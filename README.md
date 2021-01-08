@@ -84,7 +84,7 @@ This project is going to be consist of three main sections:
 
 ### Existing Features
 
-##### Home page
+#### Home page
 
 On the home page, the user can get a warm feeling of being in a library or bookstore 
 with the help of a warm brownish theme and bookstore background image through the website. 
@@ -95,7 +95,7 @@ how many people liked or write a review of a book. If the user wants to see more
 details about a book, first need to be logged in to the website. 
 This will be discussed in more detail in the following sections.
 
-##### My page
+#### My page
 
 In this section, user can sign up, login or loge out form the website. 
 In the sign up section user needs to provide a username and 
@@ -106,7 +106,7 @@ If the user is logged in then can see addition information about each book.
 Also, user can add its own collection of the books to the website 
 in the my book collections section.
 
-##### My book collections
+#### My book collections
 
 In this section, the user can add his/her own favorite books. 
 Also, the user can edit or delete the added books. 
@@ -120,7 +120,7 @@ There are several possible features to implement The most important ones:
 
 * Add a link to each book to redirect the user to book store 
 webpage which book can be purchased.
-* 2	More info for each users in their own webpage 
+* More info for each users in their own webpage 
 which can have users and they can be connect to each other.
 
 ## Technologies Used
@@ -159,7 +159,7 @@ reading books and this could be valuable for a book retail owner.
 
 This was achieved with following sections:
 
-##### Create a user account:
+#### Create a user account:
 
 User can create an account, as it can be seen in **Fig01**. 
 The user needs to provide a valid/unique username and password and agree to 
@@ -183,7 +183,7 @@ By clicking on this section user is directed to the book section which can add r
 
 ![pic](testing/manual-testing/Fig03&Fig04.png)
 
-##### Book section
+#### Book section
 
 In this part, the user can see more details of the added book (book description). 
 Also, users can be added to the user's lists which liked the booked (**Fig05**). 
@@ -210,7 +210,7 @@ saying “PLEASE LOGIN FIRST” (**Fig09**).
 
 ![pic](testing/manual-testing/Fig08&Fig09.png)
 
-##### Search in the books
+#### Search in the books
 
 Every visitor can browse through the books by searching. 
 The search function can search among Book title, author, and book description (**Fig10**). 
@@ -226,14 +226,14 @@ a relevant message will be shown to the user as “No results found” (**Fig11*
 The HTML part is validated with Markup Validation Service W3C® without any major problem. 
 There was one warning using html section element without using heading element. 
 Problem resolved with changing html section element with div element. 
-Results can be seen in the following link.
+Results can be seen in the following [link](testing/validation/Markup_validation_HTML.pdf).
 
 The W3C CSS validation service was used for CSS part. 
-There was no problem regarding CSS validating. Results can be seen in the following link.
+There was no problem regarding CSS validating. Results can be seen in the following [link](testing/validation/Markup_validation_CSS.pdf).
 
 JS hint used for validation of JavaScript. There is no problem to report.
 
-##### Website validation of different browsers
+#### Website validation of different browsers
 
 The website was tested on:
 
