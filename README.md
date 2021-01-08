@@ -246,7 +246,7 @@ The website was tested on:
 * Internet explorer
     * There was no issue. The results can be seen in the following [link](testing/validation/InternetExplorer_testing.pdf).
 * Samsung S8
-    * There was no issue. The results can be seen in the following [link](testing/validation/SamsungS8.pdf).
+    * There was no issue. The results can be seen in the following [link](testing/validation/SamsungS8_testing.pdf).
 
 ## Deployment
 
@@ -313,6 +313,29 @@ DEBUG | FALSE
 
 
 
+## Content
+
+* The book description and image links of this project is mainly from goodreads.com. https://www.goodreads.com/
+
+* The quote section in the home page, they are imported from this page https://gist.github.com/nasrulhazim/54b659e43b1035215cd0ba1d4577ee80
+
+* Term and condition section in sig up page used from free service of Terms And Conditions Generator https://www.termsandconditionsgenerator.com/
+
+## Media
+
+The photos used in this site were obtained from website with right for free to use, share or modify, even commercially:
+
+* The hero image index (hero-image-index.jpg) https://unsplash.com/photos/HH4WBGNyltc
+
+## Acknowledgements
+
+I acknowledge Gerry (my mentor) guidance on this project.
+
+## Disclaimer
+
+Please contact if you have any issue regarding copyright content.
+This project is only for educational purposes.
+sababi@kth.se
 
 
 
