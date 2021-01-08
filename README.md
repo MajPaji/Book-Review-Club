@@ -27,7 +27,7 @@ Then, you can like and share your opinion about the book too.
 5. [Testing](#testing)<br/>
     - 5.1. [Making a book library and share it with others](#making-a-book-library-and-share-it-with-others)<br/>
         - 5.1.1. [Create a user account](#create-a-user-account)<br/>
-        - 5.1.2. [User personal book library (my books)](#user-personal-book-library-(my-books))<br/>
+        - 5.1.2. [User personal book library](#user-personal-book-library)<br/>
         - 5.1.3. [Book section](#book-section)<br/>
         - 5.1.4. [Book review club home page](#book-review-club-home-page)<br/>
         - 5.1.5. [Search in the books](#search-in-the-books)<br/>
@@ -36,8 +36,8 @@ Then, you can like and share your opinion about the book too.
         - 5.2.2. [Website validation of different browsers](#website-validation-of-different-browsers)<br/>
 
 6. [Deployment](#deployment)<br/>
-    -6.1. [GitHub](#gitHub)<br/>
-    -6.2. [Heroku](#heroku)<br/>
+    - [GitHub](#gitHub)<br/>
+    - [Heroku](#heroku)<br/>
 
 7. [Content](#content)<br/>
 8. [Media](#media)<br/>
@@ -170,7 +170,7 @@ the top-right corner and a new item (my books) is added to the navbar (**Fig02**
 
 ![pic](testing/manual-testing/Fig01&Fig02.png)
 
-#### User personal book library (my books)
+#### User personal book library
 
 In this section, the user can add the book to his/her collections. 
 The user needs to provide a valid book title, author(s), book description, and book cover image 
