@@ -2,55 +2,44 @@
 
 {% block content %}
 <section class="callout valign-wrapper" style="background: url({{ url_for('static', filename='images/hero-image-index.jpg') }}) center center;">
-<div class="row"> 
-<div class="sign-up col s10 offset-s1 m12">     
-    <h4 class="center-align">Log In</h4>
-
-    <form class="col s12" method="POST" action="{{ url_for('login') }}">
-        <div class="row">
-                
-                <!-- username -->
-                <div class="input-field blue-grey-text col s12">
-                    <i class="fas fa-user-cog blue-grey-text prefix"></i>
-                    <input id="username" name="username" type="text" class="validate" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9_]{5,15}$" required>
-                    <label for="username">Username</label>
-                    
+    <div class="row"> 
+        <div class="sign-up col s10 offset-s1 m12">     
+            <h4 class="center-align">Log In</h4>
+            <form class="col s12" method="POST" action="{{ url_for('login') }}">
+                <div class="row">
+                        <!-- username -->
+                        <div class="input-field blue-grey-text col s12">
+                            <i class="fas fa-user-cog blue-grey-text prefix"></i>
+                            <input id="username" name="username" type="text" class="validate" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9_]{5,15}$" required>
+                            <label for="username">Username</label>
+                        </div>
+                        <!-- password -->
+                        <div class="input-field blue-grey-text col s12">
+                            <i class="fas fa-user-lock blue-grey-text prefix"></i>
+                            <input id="password" name="password" type="password" class="validate" minlength="5" maxlength="15" required>
+                            <label for="password">Password</label>
+                        </div>
+                        <!-- flash messages -->
+                        {% with messages = get_flashed_messages() %}
+                                {% for message in messages %}
+                                    <p class="flash-messages red-text"><i class="fas fa-exclamation-circle"></i> {{ message }}</p>
+                                {% endfor %}
+                        {% endwith %}
+                        <!-- login -->                     
+                        <button type="submit" class="btn-large teal col s12">
+                            Log in <i class="fas fa-sign-in-alt"></i>
+                        </button>
                 </div>
-                <!-- password -->
-                <div class="input-field blue-grey-text col s12">
-                    <i class="fas fa-user-lock blue-grey-text prefix"></i>
-                    <input id="password" name="password" type="password" class="validate" minlength="5" maxlength="15" required>
-                    <label for="password">Password</label>
+            </form>
+            
+            <div class="row">
+                <div class="col s12 center-align">
+                    New here?
+                    <a href="{{ url_for('sign_up') }}" class="teal-text">Sign Up</a>
                 </div>
-                <!-- flash messages -->
-                
-                {% with messages = get_flashed_messages() %}
-                        {% for message in messages %}
-                            <p class="flash-messages red-text"><i class="fas fa-exclamation-circle"></i> {{ message }}</p>
-                        {% endfor %}
-                {% endwith %}
-
-                <!-- login -->                     
-                <button type="submit" class="btn-large teal col s12">
-                    Log in <i class="fas fa-sign-in-alt"></i>
-                </button>
-        </div>
-    
-    </form>
-    
-    <div class="row">
-        <div class="col s12 center-align">
-            New here?
-            <a href="{{ url_for('sign_up') }}" class="teal-text">Sign Up</a>
-        </div>
+            </div>
+        </div>      
     </div>
-</div>      
-
-
-
-</div>
-
-
 </section>
     
 

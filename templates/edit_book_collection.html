@@ -10,7 +10,6 @@
             {% for book in edit_book %}
             <form class="col s12" method="POST" action="{{ url_for('edit_book_collection', book_id=book._id) }}">
                 <div class="row">
-
                     <!-- Book title -->
                     <div class="input-field blue-grey-text col s6">
                         <i class="material-icons blue-grey-text prefix">Title</i>
@@ -47,21 +46,18 @@
                         <p class="blue-grey-text sub-note">Valid URL link</p>
                     </div>
                     <!-- flash messages -->
-                
                     {% with messages = get_flashed_messages() %}
                             {% for message in messages %}
                                 <p class="flash-messages green-text"><i class="fas fa-exclamation-circle"></i> {{ message }}</p>
                             {% endfor %}
                     {% endwith %}
                     <!-- Cancel and Edit buttons -->
-                    
                             <a href="{{ url_for('add_book_collection') }}" class="col s6 btn-large red">
                                 Cancel <i class="fas fa-times-circle"></i>
                             </a>
                             <button type="submit" class="col s6 btn-large teal center">
                                 Edit <i class="fas fa-edit"></i>
                             </button>
-                        
                 </div>
             </form>
             {% endfor %}
@@ -70,6 +66,5 @@
 </section>
 <div>
 </div>
-
 
 {% endblock %}

@@ -7,10 +7,8 @@
     <div class="row">
         <div class="sign-up col s10 offset-s1 m12">
             <h4 class="center-align">Add a book</h4>
-
             <form class="col s12" method="POST" action="{{ url_for('add_book_collection') }}">
                 <div class="row">
-
                     <!-- Book title -->
                     <div class="input-field blue-grey-text col s6">
                         <i class="material-icons blue-grey-text prefix">Title</i>
@@ -45,7 +43,6 @@
                         <p class="blue-grey-text sub-note">Valid URL link</p>
                     </div>
                     <!-- flash messages -->
-                
                     {% with messages = get_flashed_messages() %}
                             {% for message in messages %}
                                 <p class="flash-messages green-text"><i class="fas fa-exclamation-circle"></i> {{ message }}</p>
@@ -59,13 +56,10 @@
             </form>
         </div>
     </div>
-
-
 </section>
 <div>
     <div class="row">
         {% for book in books %}
-        
         <a class="col s10 offset-s1 m4 l3  brown lighten-4 book" href="{{ url_for('book_collection', book_id=book._id) }}">
             <div class="row">
                 <div class="col s6">
@@ -83,35 +77,28 @@
                     </form>
                 </div>
             </div>
-            
             <img src="{{ book.book_image_url }}" alt="cover image for {{ book.book_display_title}}">
             <h5 class="center-align">{{ book.book_display_title }} </h5>
-            
             <p class="book-author center-align"><span>Author:</span> {{ book.book_author}}</p>
             <div class="row">
-               
                 <div class="col s6 center-align">
                 {% if (book.book_review|length == 0 or book.book_review|length == 1) %}
                     <i class="fas fa-feather teal-text"></i> {{ book.book_review|length}} review
                 {% else %}
                     <i class="fas fa-feather teal-text"></i> {{ book.book_review|length}} reviews
                 {% endif %}
-                </div>
-                    
+                </div>  
                 <div class="col s6 center-align">
                 {% if (book.liked_by|length == 0 or book.liked_by|length == 1) %}
                     <i class="fas fa-heart red-text"></i> {{ book.liked_by|length }} like
-                     
                 {% else %}
                     <i class="fas fa-heart red-text"></i> {{ book.liked_by|length }} likes
                 {% endif %}
                 </div>           
             </div>
         </a>
-        
         {% endfor %}
     </div>
 </div>
-
 
 {% endblock %}
