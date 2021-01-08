@@ -1,14 +1,11 @@
 
-
 /* profile */
 
 .profile-section {
     margin-top: 5px;
     background-color: #d7ccc8;
     font-size: 2.5vh;
-   
 }
-
 
 /* like checkbox container */
 
@@ -25,8 +22,7 @@ input[type="checkbox"]{
     position: relative;
     outline: none;
     transform: rotate(45deg);
-    -webkit-appearance: none;
-       
+    -webkit-appearance: none  
 }
 
 input[type="checkbox"]::before {

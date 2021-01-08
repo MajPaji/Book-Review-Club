@@ -2,19 +2,16 @@
 
 /* body */
 
-
 body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
-    
 }
 
 .main-section{
     flex: 1 0 auto;
     background-color: #4e342e;
 }
-
 
 /* --- navigation */
 .navbar {
@@ -43,10 +40,8 @@ nav .brand-logo {
     margin-top: 10px;
 }
 
-
 .nav-search {
     box-shadow: none;
-    
 }
 
 #dropdown1 li a {
@@ -90,7 +85,6 @@ nav .brand-logo {
 .callout {
   height: 73vh;
   width: auto;
-  
   background-repeat: no-repeat !important;
   background-size: cover !important;
   -moz-background-size: cover !important;
@@ -145,8 +139,6 @@ nav .brand-logo {
     font-weight: bold;
     letter-spacing: 1px;
 }
-
-
 
 /* book section */
 
@@ -215,7 +207,6 @@ nav .brand-logo {
 
 .carousel.carousel-slider .carousel-item {
     opacity: 0;
-    
 }
 
 .speech-frame {
