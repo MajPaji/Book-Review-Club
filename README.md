@@ -306,7 +306,7 @@ echo web: python app.py > Procfile
 IP | 0.0.0.0
 PORT | 5000
 MONGO_URI | `mongodb+srv://<username>:<password>@<cluster_name>-qtxun.mongodb.net/<database_name>?retryWrites=true&w=majority`
-SECRET_KEY | `<your_secret_key>`
+SECRET_KEY | `verysecretkey`
 DEBUG | FALSE
 
 * Click Deploy in the Heroku dashbord
