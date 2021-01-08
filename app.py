@@ -131,7 +131,7 @@ def book_collection(book_id):
         render my book collection from db
         user can like/unlike the book, write a review
         user can delete its own review.
-        admin can delete delete all reviews.
+        admin can delete all reviews.
     """
 
     # redirect to login page if there is no login user
@@ -241,9 +241,16 @@ def edit_book_collection(book_id):
     """
         edit books in the book collection section
     """
-    # redirect to login page if there is no login user
+    # redirect to login page if there is no logged in user
     if session.get("user") is None:
         flash("Please login first")
+        return redirect(url_for('login'))
+
+    # Prohibit if a user try to edit another user book (except admin user)
+    if session.get("user") != mongo.db.books.find_one(
+        {"_id": ObjectId(book_id)})["added_by"] and session.get(
+            "user") != "m_admin":
+        flash("You do not have permission to edit this book")
         return redirect(url_for('login'))
 
     edit_book = mongo.db.books.find({"_id": ObjectId(book_id)})
@@ -273,9 +280,16 @@ def delete_book_collection(book_id):
     """
         Delete books in book collection section
     """
-    # redirect to login page if there is no login user
+    # redirect to login page if there is no logged in user
     if session.get("user") is None:
         flash("Please login first")
+        return redirect(url_for('login'))
+
+    # Prohibit if a user try to delete another user book (except admin user)
+    if session.get("user") != mongo.db.books.find_one(
+        {"_id": ObjectId(book_id)})["added_by"] and session.get(
+            "user") != "m_admin":
+        flash("You do not have permission to delete this book")
         return redirect(url_for('login'))
 
     mongo.db.books.remove(
