@@ -24,25 +24,26 @@ Then, you can like and share your opinion about the book too.
     - 3.2. [Features Left to Implement](#features-left-to-implement)<br/>
 
 4. [Technologies Used](#technologies-used)<br/>
-5. [Testing](#testing)<br/>
-    - 5.1. [Making a book library and share it with others](#making-a-book-library-and-share-it-with-others)<br/>
-        - 5.1.1. [Create a user account](#create-a-user-account)<br/>
-        - 5.1.2. [User personal book library](#user-personal-book-library)<br/>
-        - 5.1.3. [Book section](#book-section)<br/>
-        - 5.1.4. [Book review club home page](#book-review-club-home-page)<br/>
-        - 5.1.5. [Search in the books](#search-in-the-books)<br/>
-    - [5-2- The website validation](#the-website-validation)<br/>
-        - 5.2.1. [Different validation services](#different-validation-services)<br/>
-        - 5.2.2. [Website validation of different browsers](#website-validation-of-different-browsers)<br/>
+5. [Database architecture](#database-architecture)<br/>
+6. [Testing](#testing)<br/>
+    - 6.1. [Making a book library and share it with others](#making-a-book-library-and-share-it-with-others)<br/>
+        - 6.1.1. [Create a user account](#create-a-user-account)<br/>
+        - 6.1.2. [User personal book library](#user-personal-book-library)<br/>
+        - 6.1.3. [Book section](#book-section)<br/>
+        - 6.1.4. [Book review club home page](#book-review-club-home-page)<br/>
+        - 6.1.5. [Search in the books](#search-in-the-books)<br/>
+    - 6.2. [The website validation](#the-website-validation)<br/>
+        - 6.2.1. [Different validation services](#different-validation-services)<br/>
+        - 6.2.2. [Website validation of different browsers](#website-validation-of-different-browsers)<br/>
 
-6. [Deployment](#deployment)<br/>
+7. [Deployment](#deployment)<br/>
     - [GitHub](#gitHub)<br/>
     - [Heroku](#heroku)<br/>
 
-7. [Content](#content)<br/>
-8. [Media](#media)<br/>
-9. [Acknowledgements](#acknowledgements)<br/>
-10. [Disclaimer](#disclaimer)<br/>
+8. [Content](#content)<br/>
+9. [Media](#media)<br/>
+10. [Acknowledgements](#acknowledgements)<br/>
+11. [Disclaimer](#disclaimer)<br/>
 
 <br/>
 
@@ -147,6 +148,12 @@ The following technologies have been used in this project:
     * used to create icons.
 * Google font
     * used for formatting the fonts.
+
+## Database architecture
+
+This project has three main collection in the database. The database structure in MongoDB has been set as follow:
+
+![pic](db/db_structure.png)
 
 ## Testing
 
