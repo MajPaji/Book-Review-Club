@@ -151,7 +151,7 @@ The following technologies have been used in this project:
 
 ## Database architecture
 
-This project has three main collection in the database. The database structure in MongoDB has been set as follow:
+This project has three main collection in the database, books, users and quotes. The database structure in MongoDB has been set as follow:
 
 ![pic](db/db_structure.png)
 
@@ -259,64 +259,107 @@ The website was tested on:
 
 ### GitHub
 
+This part explain how to, clone this repository from GitHub, or work the project 
+from a local copy and finally deploy it to Heroku, for this purpose you need to have 
+Python (verson 3.0) installed, Github, MongoDB and Heroku account.
+
 It is possible to deploy this project in GitHub as your development environment, with following these steps:
 
-* Save a copy of the github repository located at https://github.com/MajPaji/Book-Review-Club.git or with clone in git clicking
+##### Cloning of the Repository
+
+* In your IDE CLI type:
 
 ```
 git clone https://github.com/MajPaji/Book-Review-Club.git
 ```
+##### Installing the Requirements
+
 * Install all requirements modules with following CL:
+
 ```
 pip3 install -r requirements.txt
 ```
-* create `env.py` file with follwoing data:
+##### Creating Collections in MongoDB
 
-```
-MONGO_URI=mongodb+srv://...
-SECRET_KEY=verysecretkey
-```
+* Login to your MongoDB account
+* Create a cluster
+* Create a database
+    * books
+    * users
+    * quotes
+
+##### Setting up the environmental variables:
+
+* Create a .gitignore file in the root directory
+* Write `env.py` and `__pycache__/` into .gitignore file
+* create `env.py` file
+* In the `env.py` file write following code with YOURPASSWORD, YOURCLUSTERNAME, YOURDABASENAME and YOURSECRETKEY
+
+![pic](wireframes/env.PNG)
+
+##### Running the app
+
 * In the last line of `app.py` change `debug=False` to `debug=True`
 
 * It is possible to run the application with following CL:
 
 ```
-python app.py
+python3 app.py
 ```
 ### Heroku
 
-It is possible to deploy this project to Heroku, with following steps:
+You have to follow these steps to host this project to Heroku:
+
+##### Setup the Heroku
+
+* Create a Heroku account
+* Create a new app and select your region
+
+##### Prepare Local workspace for Heroku
 
 * Make a requirements.txt file using follwing CL:
 
 ```
-pip freeze > requirements.txt
+pip3 freeze --local > requirements.txt
 ```
+(This is required for the Heroku to know which files need to be installed for the app)
+
 * Make a Procfile in the CL:
 ```
 echo web: python app.py > Procfile
 ```
-* Push requirements and Procfile to the GitHub 
+(This is required for the Heroku to know at the entry point get the app up and running)
 
-* Create a new app on the Heroku website (It is not possible to choose the simillar name as this project)
+##### Push the files to Heroku
 
-* In the Heroku dashbord click Deploy and in the Deployment method select GitHub
+* In the CLI type:
+```
+heroku login -i 
+```
+(and fill in your username and password)
 
-* Confirm the linking
+* Commit all the files to Herkou, in CLI type:
 
-* In the Heroku dashbord click Setting and Reveal Config Vars
+```
+git push heroku master 
+```
+##### Setup the configuration variable in Heroku
 
-* Set the following parameters
+* Go to your Heroku account and in the app setting
+* Set the keys and values as follow:
 
 | Key | Value |
  --- | ---
 IP | 0.0.0.0
 PORT | 5000
-MONGO_URI | `mongodb+srv://<username>:<password>@<cluster_name>-qtxun.mongodb.net/<database_name>?retryWrites=true&w=majority`
-SECRET_KEY | `verysecretkey`
-DEBUG | FALSE
+MONGO_URI | `mongodb+srv://root:YOURPASSWORD@YOURCLUSTERNAME.j4ah4.mongodb.net/YOURDATABASENAME?retryWrites=true&w=majority`
+SECRET_KEY | `YOURSECRETKEY`
+MONGO_DBNAME | `YOURDATABASENAME`
 
-* Click Deploy in the Heroku dashbord
+##### Run the App in Heroku
+
+* Click Open app in the right corner of your Heroku account
+* •	Click on the live link available in the address bar
 
 
 
