@@ -5,55 +5,57 @@
 <section class="callout valign-wrapper"
     style="background: url({{ url_for('static', filename='images/hero-image-index.jpg') }}) center center;">
     <div class="row">
-        <div class="sign-up col s10 offset-s1 m12">
+        <div class="sign-up col s12">
             <h4 class="center-align">Add a book</h4>
-            <form class="col s12" method="POST" action="{{ url_for('add_book_collection') }}">
-                <div class="row">
-                    <!-- Book title -->
-                    <div class="input-field blue-grey-text col s6">
-                        <i class="material-icons blue-grey-text prefix">Title</i>
-                        <input id="book_title" name="book_title" type="text" class="validate" minlength="1"
-                            maxlength="50" pattern="^[a-zA-Z0-9_. ]{1,50}$" required>
-                        <label for="book_title">Book Title</label>
-                        <p class="blue-grey-text sub-note">Only letters and numbers</p>
+            <div class="row">
+                <form class="col s10 offset-s1" method="POST" action="{{ url_for('add_book_collection') }}">
+                    <div class="row">
+                        <!-- Book title -->
+                        <div class="input-field blue-grey-text col s6">
+                            <i class="material-icons blue-grey-text prefix">Title</i>
+                            <input id="book_title" name="book_title" type="text" class="validate" minlength="1"
+                                maxlength="50" pattern="^[a-zA-Z0-9_. ]{1,50}$" required>
+                            <label for="book_title">Book Title</label>
+                            <p class="blue-grey-text sub-note hide-on-med-and-down">Only letters and numbers</p>
+                        </div>
+                        <!-- Book author -->
+                        <div class="input-field blue-grey-text col s6">
+                            <i class="fas fa-user-edit blue-grey-text prefix"></i>
+                            <input id="book_author" name="book_author" type="text" class="validate" minlength="1"
+                                maxlength="30" pattern="^[a-zA-Z0-9_., ]{1,30}$" required>
+                            <label for="book_author">Book Author</label>
+                            <p class="blue-grey-text sub-note hide-on-med-and-down">Only letters and numbers</p>
+                        </div>
+                        <!-- Book description -->
+                        <div class="input-field blue-grey-text col s12">
+                            <i class="fas fa-align-left blue-grey-text prefix"></i>
+                            <textarea id="book_description" name="book_description" class="validate materialize-textarea"
+                                minlength="1" maxlength="350" pattern="^[a-zA-Z0-9_. ]{1,350}$" required></textarea>
+                            <label for="book_description">Book Description</label>
+                        </div>
+                        <!-- Book image url link -->
+                        <div class="input-field blue-grey-text col s12">
+                            <i class="far fa-image blue-grey-text prefix"></i>
+                            <input id="book_image_url" name="book_image_url" type="text" class="validate" minlength="5"
+                                maxlength="150"
+                                pattern="^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$"
+                                required>
+                            <label for="book_image_url">Book Cover Image Link</label>
+                            <p class="blue-grey-text sub-note hide-on-med-and-down">Valid URL link</p>
+                        </div>
+                        <!-- flash messages -->
+                        {% with messages = get_flashed_messages() %}
+                                {% for message in messages %}
+                                    <p class="flash-messages green-text"><i class="fas fa-exclamation-circle"></i> {{ message }}</p>
+                                {% endfor %}
+                        {% endwith %}
+                        <!-- Submit button -->
+                        <button type="submit" class="btn-large teal col s12">
+                            Sumbit <i class="fas fa-paper-plane"></i>
+                        </button>
                     </div>
-                    <!-- Book author -->
-                    <div class="input-field blue-grey-text col s6">
-                        <i class="fas fa-user-edit blue-grey-text prefix"></i>
-                        <input id="book_author" name="book_author" type="text" class="validate" minlength="1"
-                            maxlength="30" pattern="^[a-zA-Z0-9_., ]{1,30}$" required>
-                        <label for="book_author">Book Author</label>
-                        <p class="blue-grey-text sub-note">Only letters and numbers</p>
-                    </div>
-                    <!-- Book description -->
-                    <div class="input-field blue-grey-text col s12">
-                        <i class="fas fa-align-left blue-grey-text prefix"></i>
-                        <textarea id="book_description" name="book_description" class="validate materialize-textarea"
-                            minlength="1" maxlength="350" pattern="^[a-zA-Z0-9_. ]{1,350}$" required></textarea>
-                        <label for="book_description">Book Description</label>
-                    </div>
-                    <!-- Book image url link -->
-                    <div class="input-field blue-grey-text col s12">
-                        <i class="far fa-image blue-grey-text prefix"></i>
-                        <input id="book_image_url" name="book_image_url" type="text" class="validate" minlength="5"
-                            maxlength="150"
-                            pattern="^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$"
-                            required>
-                        <label for="book_image_url">Book Cover Image Link</label>
-                        <p class="blue-grey-text sub-note">Valid URL link</p>
-                    </div>
-                    <!-- flash messages -->
-                    {% with messages = get_flashed_messages() %}
-                            {% for message in messages %}
-                                <p class="flash-messages green-text"><i class="fas fa-exclamation-circle"></i> {{ message }}</p>
-                            {% endfor %}
-                    {% endwith %}
-                    <!-- Submit button -->
-                    <button type="submit" class="btn-large teal col s12">
-                        Sumbit <i class="fas fa-paper-plane"></i>
-                    </button>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
     </div>
 </section>

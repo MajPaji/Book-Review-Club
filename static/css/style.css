@@ -83,7 +83,9 @@ nav .brand-logo {
 /* call out section */
 
 .callout {
-  height: 73vh;
+  padding-top: 30px;
+  padding-bottom: 15px;
+  min-height: 700px;
   width: auto;
   background-repeat: no-repeat !important;
   background-size: cover !important;
