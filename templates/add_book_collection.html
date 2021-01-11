@@ -5,10 +5,10 @@
 <section class="callout valign-wrapper"
     style="background: url({{ url_for('static', filename='images/hero-image-index.jpg') }}) center center;">
     <div class="row">
-        <div class="sign-up col s12">
+        <div class="sign-up col s10 offset-s1">
             <h4 class="center-align">Add a book</h4>
             <div class="row">
-                <form class="col s10 offset-s1" method="POST" action="{{ url_for('add_book_collection') }}">
+                <form class="col s12" method="POST" action="{{ url_for('add_book_collection') }}">
                     <div class="row">
                         <!-- Book title -->
                         <div class="input-field blue-grey-text col s6">
@@ -50,7 +50,7 @@
                                 {% endfor %}
                         {% endwith %}
                         <!-- Submit button -->
-                        <button type="submit" class="btn-large teal col s12">
+                        <button type="submit" class="btn-large teal col s10 offset-s1">
                             Sumbit <i class="fas fa-paper-plane"></i>
                         </button>
                     </div>

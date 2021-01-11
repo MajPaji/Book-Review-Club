@@ -51,7 +51,7 @@
         <ul class="sidenav" id="mobile-demo">
             <li><a href="{{ url_for('book_review_club') }}">Home <i class="fas fa-home"></i></a></li>
             {% if session.user %}
-                <li><a href="{{ url_for('add_book_collection') }}">My Book Collections <i class="fas fa-book"></i></a></li>
+                <li><a href="{{ url_for('add_book_collection') }}">My Books <i class="fas fa-book"></i></a></li>
                 <li ><a href="{{ url_for('profile', username=session['user']) }}"><i class="fas fa-address-card"></i> Profile</a></li>
             {% endif %}
             {% if not session.user %}
@@ -85,7 +85,7 @@
 
         {% endblock %}
     </div>
-
+    
     <!-- footer -->
     <footer class="page-footer brown darken-3">
         <div class="container ">

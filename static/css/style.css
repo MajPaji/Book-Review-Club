@@ -245,6 +245,19 @@ nav .brand-logo {
 }
 
 
+/* profile */
+
+.profile-section h3{
+    font-family: "Exo", sans-serif;
+    font-size: 5vh;
+    margin-bottom: 70px;
+}
+
+.profile-section a{
+    font-family: "Exo", sans-serif;
+    font-size: 2vh;
+    margin-bottom: 70px;
+}
 
 
 

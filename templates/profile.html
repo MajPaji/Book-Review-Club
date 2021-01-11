@@ -1,18 +1,21 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container profile-section center-align">
-    <div class="row">
-    <div class="col s12 offset-1 center-align">
-      <div class="card brown lighten-4">
-        <div class="card-content">
-            <h3>{{ username }}'s Profile</h3>
-            <a href="{{ url_for('add_book_collection') }}">My Books <i class="fas fa-book"></i></a>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col s10 offset-s1">
+                    <div class="card brown lighten-4 center-align">
+                        <div class="card-content profile-section">
+                            <h3>{{ username }}'s Profile</h3>
+                            <a class="btn btn-large teal" href="{{ url_for('add_book_collection') }}">My Books <i class="fas fa-book"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 {% endblock %}
+
+
 
