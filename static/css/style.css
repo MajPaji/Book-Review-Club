@@ -247,6 +247,10 @@ nav .brand-logo {
 
 /* profile */
 
+.profile-section {
+    background-color: #d7ccc8;
+}
+
 .profile-section h3{
     font-family: "Exo", sans-serif;
     font-size: 5vh;
