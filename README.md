@@ -283,7 +283,7 @@ pip3 install -r requirements.txt
 
 * Login to your MongoDB account
 * Create a cluster
-* Create a database
+* Create a database with following collections:
     * books
     * users
     * quotes
@@ -291,7 +291,7 @@ pip3 install -r requirements.txt
 ##### Setting up the environmental variables:
 
 * Create a .gitignore file in the root directory
-* Write `env.py` and `__pycache__/` into .gitignore file
+* Write `env.py` and `__pycache__/` into the .gitignore file
 * create `env.py` file
 * In the `env.py` file write following code with YOURPASSWORD, YOURCLUSTERNAME, YOURDABASENAME and YOURSECRETKEY
 
@@ -359,7 +359,7 @@ MONGO_DBNAME | `YOURDATABASENAME`
 ##### Run the App in Heroku
 
 * Click Open app in the right corner of your Heroku account
-* •	Click on the live link available in the address bar
+* Click on the live link available in the address bar
 
 
 
@@ -367,7 +367,7 @@ MONGO_DBNAME | `YOURDATABASENAME`
 
 * The book description and image links of this project is mainly from goodreads.com. https://www.goodreads.com/
 
-* The quote section in the home page, they are imported from this page https://gist.github.com/nasrulhazim/54b659e43b1035215cd0ba1d4577ee80
+* The quote section in the home page, they are imported from this page to the database https://gist.github.com/nasrulhazim/54b659e43b1035215cd0ba1d4577ee80
 
 * Term and condition section in sig up page used from free service of Terms And Conditions Generator https://www.termsandconditionsgenerator.com/
 
