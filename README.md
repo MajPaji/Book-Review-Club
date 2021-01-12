@@ -37,8 +37,8 @@ Then, you can like and share your opinion about the book too.
         - 6.2.2. [Website validation of different browsers](#website-validation-of-different-browsers)<br/>
 
 7. [Deployment](#deployment)<br/>
-    - [GitHub](#gitHub)<br/>
-    - [Heroku](#heroku)<br/>
+    - 7.1. [GitHub](#gitHub)<br/>
+    - 7.2. [Heroku](#heroku)<br/>
 
 8. [Content](#content)<br/>
 9. [Media](#media)<br/>
