@@ -7,7 +7,7 @@
 reference for people looking for a book to read. Obviously, There are many 
 books available to read, but find a good book could be frustrating sometimes. 
 This web site present different books, give a short description of each book,
- and one can read other people reviews about books. Yet, this is not all.
+ and one can read other people reviews about books. <br/> Yet, this is not all.
 This a book club. It means you can get familiar with other readers. 
 You can see which book they have liked and their opinion about books. 
 Then, you can like and share your opinion about the book too.
@@ -128,30 +128,33 @@ which can have users and they can be connect to each other.
 
 The following technologies have been used in this project:
 
-* Python 3.8.2 
+* [Python 3.8.2](https://www.python.org/download/releases/3.0/) 
     * Python is supposed to be the main hero of this project.
-* Flask
+* [Flask](https://flask.palletsprojects.com/en/1.1.x/)
     * web framework written in Python.
-* MongoDB
+* [Jinja](https://jinja.palletsprojects.com/en/2.11.x/)
+    * is used as templating language for Python and its depending framework Flask
+* [MongoDB](https://www.mongodb.com/)
     * It is a document-oriented database program.
-* Heroku
+* [Heroku](https://heroku.com/)
     * It is a cloud platform to run this python project.
-* HTML5
+* [HTML](https://www.w3.org/TR/html52/) 
     * used to structure and presenting the content.
-* CSS3
+* [CSS](https://www.w3.org/Style/CSS/Overview.en.html)
     * used for styling.
-* JQuery
+* [JQuery](https://jquery.com/)
     * this project used JavaScript in the form of JQuery to simplify DOM manipulation.
-* Materialize 1.0.0
+* [Materialize 1.0.0](https://materializecss.com/)
     * CSS framework used for structuring and presenting the content.
-* Fontawsome
+* [FontAwesome](https://fontawesome.com/)
     * used to create icons.
-* Google font
+* [Google fonts](https://fonts.google.com/)
     * used for formatting the fonts.
+
 
 ## Database architecture
 
-This project has three main collection in the database, books, users and quotes. The database structure in MongoDB has been set as follow:
+This project has three main collections in the database, books, users and quotes. The database structure in MongoDB has been set as follow:
 
 ![pic](db/db_structure.png)
 
