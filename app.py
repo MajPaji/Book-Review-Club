@@ -4,7 +4,6 @@ from flask import (
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 import datetime
-import json
 from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists('env.py'):
     import env
@@ -142,9 +141,9 @@ def book_collection(book_id):
     # make heart active if user liked the book already
     checkbox = []
     tooltip_value = 'Love it'
-    if mongo.db.books.find(
+    if mongo.db.books.count_documents(
             {"_id": ObjectId(book_id), "liked_by":
-             {"$elemMatch": {"_user": session["user"]}}}).count() != 0:
+             {"$elemMatch": {"_user": session["user"]}}}) != 0:
         checkbox = 'checked'
         tooltip_value = 'Not a Fan'
 
@@ -161,21 +160,21 @@ def book_collection(book_id):
                 "review_id": ObjectId()
             }
 
-            mongo.db.books.update({"_id": ObjectId(book_id)}, {
+            mongo.db.books.update_one({"_id": ObjectId(book_id)}, {
                 "$push": {"book_review": submit}})
     # like post
         else:
-            if mongo.db.books.find(
+            if mongo.db.books.count_documents(
                     {"_id": ObjectId(book_id),
                      "liked_by": {"$elemMatch":
-                                  {"_user": session["user"]}}}).count() != 0:
-                mongo.db.books.update(
+                                  {"_user": session["user"]}}}) != 0:
+                mongo.db.books.update_one(
                     {"_id": ObjectId(book_id)},
                     {"$pull": {"liked_by": {"_user": session["user"]}}})
                 checkbox = []
                 tooltip_value = 'Love it'
             else:
-                mongo.db.books.update(
+                mongo.db.books.update_one(
                     {"_id": ObjectId(book_id)},
                     {"$push": {"liked_by": {"_user": session["user"]}}})
                 checkbox = 'checked'
@@ -192,7 +191,7 @@ def delete_review(book_id, review_item):
     """
         Delete review function
     """
-    mongo.db.books.update(
+    mongo.db.books.update_one(
         {"_id": ObjectId(book_id)},
         {"$pull": {"book_review": {"review_id": ObjectId(review_item)}}})
 
@@ -312,4 +311,4 @@ def logout():
 
 if __name__ == "__main__":
     app.run(host=os.environ.get('IP'), port=int(
-        os.environ.get('PORT')), debug=False)
+        os.environ.get('PORT')), debug=True)
